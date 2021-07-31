@@ -217,6 +217,7 @@
   padding: 5px;
 }
 .form button.submit {
+  cursor: pointer;
   margin-top: 1.5rem;
   padding: 0.5rem;
   width: 75%;
@@ -239,12 +240,12 @@
   color: red;
 }
 .modal-false {
-  animation: modalFalse 10s ease-out;
-  display: none;
+  animation: modalFalse 0.25s ease-out;
+  visibility: hidden;
 }
 .modal-true {
-  animation: modalTrue 0.5s ease-in;
-  display: flex;
+  animation: modalTrue 0.25s ease-in;
+  visibility: visible;
 }
 @keyframes modalTrue {
   0% {
@@ -256,11 +257,11 @@
 }
 @keyframes modalFalse {
   0% {
-    display: flex;
+    visibility: visible;
     opacity: 1;
   }
   100% {
-    display: flex;
+    visibility: hidden;
     opacity: 0;
   }
 }

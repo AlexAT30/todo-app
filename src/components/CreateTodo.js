@@ -3,17 +3,23 @@ import { createTodo } from "../services/createTodo"
 
 const CreateTodo = ({ setTodoData, setModal, modal }) => {
 
-  const { register, handleSubmit } = useForm()
+  const { register, handleSubmit, reset } = useForm()
 
   const onSubmit = async (values) => {
     const newData = await createTodo(values)
     setTodoData(oldData => [...oldData, newData.data])
+    closeModal()
+  }
+  const closeModal = () => {
+    reset ()
+    setModal(false)
+    
   }
   
   return (
     <div className={`formBg modal-${modal}`}>
       <form className='form' onSubmit={handleSubmit(onSubmit)} >
-      <button className='closeCreate' onClick={() => setModal(false)}>
+      <button className='closeCreate' onClick={closeModal}>
         <i className="bi bi-x-circle"></i>
       </button>
       <h2>Create Task</h2>

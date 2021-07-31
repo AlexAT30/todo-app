@@ -1,7 +1,8 @@
-const TodoItem = ({ student, task }) => {
+const TodoItem = ({ student, task, id, onDelete }) => {
+
   return (
     <div className='todoItem' >
-      <button className='delete'><i className="bi bi-trash-fill"></i></button>
+      <button className='delete' onClick={() => onDelete(id)}><i className="bi bi-trash-fill"></i></button>
       <div>
         <p className='task' >{task}</p>
         <p className='student' >- {student}</p>
