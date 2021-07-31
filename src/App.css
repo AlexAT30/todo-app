@@ -1,38 +1,150 @@
-.App {
-  text-align: center;
+:root {
+  /*Colors*/
+  --black-50: #0000009a;
+  --white-50: #ffffff50;
+  --principal-color: blue;
+  --secondary-color: yellow;
+  /*Others*/
+  --shadow: 1px 1px 10px #0000003a;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* APP */
+.app {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  height: 100vh;
+}
+/* Header */
+.header {
+  width: 100%;
+  background-image: url('/src/images/backgroud.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1.5rem;
+  padding-bottom: 3rem;
+}
+.filter {
+  box-sizing: border-box;
+  background-color: var(--white-50);
+  width: 40%;
+  border-radius: 2rem;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.filter button {
+  background: none;
+  border: none;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.filter button:hover {
+  cursor: pointer;
+  color: var(--principal-color);
+  font-weight: bold;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.date {
+  width: 45%;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  color: white;
+  font-size: 1.7rem;
+  justify-content: center;
+  align-items: center;
+}
+.dayNum, .month, .year, .day  {
+  margin: 0;
+}
+.dayNum {
+  font-size: 5rem;
+  color: var(--secondary-color);
+}
+.year {
+  font-weight: lighter;
+}
+@media (max-width:375px) and (max-width: 768px ) {
+  .filter {
+    width: 80%;
+    background: none;
+    grid-template-columns: 1fr;
   }
-  to {
-    transform: rotate(360deg);
+  .filter button {
+    background-color: var(--white-50);
+    margin-top: 10px;
+    border-radius: 5rem;
+    padding: 5px;
   }
+  .date {
+    width: 85%;
+  }
+}
+@media (min-width:376px) and (max-width: 768px) {
+  .filter {
+    width: 80%;
+  }
+  .date {
+    width: 85%;
+  }
+}
+/* ToDo */
+.todoContainer {
+  height: 50vh;
+  overflow: auto;
+  background-color: white;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  position: relative;
+  bottom: 3rem;
+}
+.todoItem {
+  width: 90%;
+  margin-top: 10px;
+  box-shadow: var(--shadow);
+  border-radius: 2px;
+  border-left: solid 10px var(--secondary-color);
+  position: relative;
+}
+.task {
+  margin: 0.75rem 1rem;
+  font-weight: bold;
+}
+.student {
+  margin: 0.5rem 1rem;
+  color: var(--black-50);
+}
+.check {
+  text-align: end;
+  width: 7.5%;
+  height: 50%;
+  background-color: var(--secondary-color);
+  position: absolute;
+  top: 0;
+  left: 92.5%;
+  border-radius: 0 0 0 100%;
+}
+.check i {
+  margin-right: 10px;
+}
+@media (max-width: 768px) {
+  .todoContainer {
+    width: 95%;
+  }
+}
+/* Create Button */
+.createButton {
+  color: var(--principal-color);
+  border-radius: 50%;
+  border: none;
+  box-shadow: var(--shadow);
+  font-size: 3rem;
+  padding: 0.5rem 1.25rem;
+}
+.createButton:hover {
+  background-color: var(--principal-color);
+  color: white;
 }
