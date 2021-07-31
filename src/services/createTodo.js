@@ -1,10 +1,11 @@
 import axios from "axios"
 
-export const getTodo = async () => {
+export const createTodo = async(data) => {
   const response = await axios({
-    method: 'get',
+    method: 'post',
     baseURL: 'https://todos-go.herokuapp.com/api',
-    url: '/todos'
+    url: '/todos',
+    data: data
   })
-  return response.data
+  return response
 }

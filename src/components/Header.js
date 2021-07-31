@@ -1,4 +1,7 @@
 const Header = () => {
+
+  const date = new Date()
+
   return (
     <header className='header'>
       <div className='filter' >
@@ -7,12 +10,12 @@ const Header = () => {
         <button>No completas</button>
       </div>
       <div className='date'>
-        <p className='dayNum'>16</p>
+        <p className='dayNum'>{date.getDate()}</p>
         <div>
-          <p className='month'>August</p>
-          <p className='year'>2021</p>
+          <p className='month'>{date.toLocaleString('en-us', {month: 'long'})}</p>
+          <p className='year'>{date.getFullYear()}</p>
         </div>
-        <p className='day'>Monday</p>
+        <p className='day'>{date.toLocaleString('en-us', {weekday:'long'})}</p>
       </div>
     </header>
   )

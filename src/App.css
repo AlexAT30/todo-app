@@ -1,5 +1,6 @@
 :root {
   /*Colors*/
+  --transparent-bg: #00000050;
   --black-50: #0000009a;
   --white-50: #ffffff50;
   --principal-color: blue;
@@ -30,6 +31,7 @@
   box-sizing: border-box;
   background-color: var(--white-50);
   width: 40%;
+  max-width: 1200px;
   border-radius: 2rem;
   padding: 10px;
   display: grid;
@@ -46,6 +48,7 @@
   font-weight: bold;
 }
 .date {
+  max-width: 1250px;
   width: 45%;
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
@@ -90,7 +93,7 @@
 }
 /* ToDo */
 .todoContainer {
-  height: 50vh;
+  max-height: 50vh;
   overflow: auto;
   background-color: white;
   box-sizing: border-box;
@@ -98,10 +101,12 @@
   flex-direction: column;
   align-items: center;
   width: 50%;
+  max-width: 1300px;
   position: relative;
   bottom: 3rem;
 }
 .todoItem {
+  display: flex;
   width: 90%;
   margin-top: 10px;
   box-shadow: var(--shadow);
@@ -118,6 +123,7 @@
   color: var(--black-50);
 }
 .check {
+  cursor: pointer;
   text-align: end;
   width: 7.5%;
   height: 50%;
@@ -125,12 +131,40 @@
   position: absolute;
   top: 0;
   left: 92.5%;
+  border: none;
   border-radius: 0 0 0 100%;
 }
 .check i {
-  margin-right: 10px;
+  margin-right: 20%;
+}
+.delete {
+  color: black;
+  background: none;
+  border: none;
+  align-self: flex-start;
+  padding: 10px;
+  font-size: 1.1rem;
+}
+.delete :hover {
+  cursor: pointer;
+  color: red;
+}
+@media (max-width: 376px ) {
+ .check {
+   width: 20%;
+   left: 80%;
+ }
+}
+@media (min-width:377px) and (max-width: 576px ) {
+ .check {
+   width: 10%;
+   left: 90%;
+ }
 }
 @media (max-width: 768px) {
+  .delete {
+    color: red;
+  }
   .todoContainer {
     width: 95%;
   }
@@ -145,6 +179,88 @@
   padding: 0.5rem 1.25rem;
 }
 .createButton:hover {
+  cursor: pointer;
   background-color: var(--principal-color);
   color: white;
+}
+/*Form*/
+.formBg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--transparent-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form {
+  box-shadow: var(--shadow);
+  position: relative;
+  background-color: white;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 5px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.form h2 {
+  margin: 0;
+}
+.form label p {
+  font-weight: bold;
+  margin: 0.5rem
+}
+.form input {
+  padding: 5px;
+}
+.form button.submit {
+  margin-top: 1.5rem;
+  padding: 0.5rem;
+  width: 75%;
+  background-color: var(--principal-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+.closeCreate {
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+}
+.closeCreate:hover {
+  color: red;
+}
+.modal-false {
+  animation: modalFalse 10s ease-out;
+  display: none;
+}
+.modal-true {
+  animation: modalTrue 0.5s ease-in;
+  display: flex;
+}
+@keyframes modalTrue {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes modalFalse {
+  0% {
+    display: flex;
+    opacity: 1;
+  }
+  100% {
+    display: flex;
+    opacity: 0;
+  }
 }

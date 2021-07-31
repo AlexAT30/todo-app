@@ -2,9 +2,8 @@ import { useEffect, useState } from "react"
 import { getTodo } from "../services/getTodo"
 import TodoItem from "./TodoItem"
 
-const TodoContainer = () => {
+const TodoContainer = ({ setTodoData, todoData }) => {
 
-  const [todoData, setTodoData] = useState([])
   const [loadTodo, setLoadTodo] = useState(false)
 
   useEffect (
@@ -14,7 +13,7 @@ const TodoContainer = () => {
         setTodoData(data.todos)
       }
       getData()
-    }, []
+    }, [setTodoData]
   )
   useEffect (
     () => {
@@ -24,7 +23,7 @@ const TodoContainer = () => {
     },[todoData]
   )
   // pinta las tareas en la pagina
-  const todoList = todoData.map(element => <TodoItem student={element.student} task={element.task} />)
+  const todoList = todoData.map(element => <TodoItem key={element.id} student={element.student} task={element.task} />)
   return (
     <div className='todoContainer' >
       {
