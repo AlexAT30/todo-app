@@ -1,12 +1,10 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { deleteTodo } from "../services/deleteTodo"
 import { getTodo } from "../services/getTodo"
 import { updateTodo } from "../services/updateTodo"
 import TodoItem from "./TodoItem"
 
 const TodoContainer = ({ setTodoData, todoData }) => {
-
-  const [loadTodo, setLoadTodo] = useState(false)
 
   useEffect (
     () => {
@@ -17,13 +15,7 @@ const TodoContainer = ({ setTodoData, todoData }) => {
       getData()
     }, [setTodoData]
   )
-  useEffect (
-    () => {
-      if(todoData) {
-        setLoadTodo(true)
-      }
-    },[todoData]
-  )
+
   const onDelete = async (id) => {
     await deleteTodo(id)
     setTodoData(oldData => oldData.filter(element => element.id !== id))
@@ -52,13 +44,7 @@ const TodoContainer = ({ setTodoData, todoData }) => {
   
   return (
     <div className='todoContainer' >
-      {
-        loadTodo 
-        ?
-        todoList.length === 0 ? emptyList : todoList
-        :
-        'cargando'
-      }
+      {todoList.length === 0 ? emptyList : todoList}
     </div>
   )
 }

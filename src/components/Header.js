@@ -4,11 +4,11 @@ const Header = () => {
 
   return (
     <header className='header'>
-      <div className='filter' >
+      {/* <div className='filter' >
         <button>Todas</button>
         <button>Completas</button>
         <button>No completas</button>
-      </div>
+      </div> */}
       <div className='date'>
         <p className='dayNum'>{date.getDate()}</p>
         <div>
